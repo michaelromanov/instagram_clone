@@ -16,4 +16,4 @@ CREATE TABLE photos(
 );
 
 INSERT INTO users (username) VALUES ('BlueTheCat'), ('CharlieBrown'), ('ColtSteel');
-
+INSERT INTO photos (image_url, user_id) VALUES ('/alskjd76', 1), ('/lkajs98', 2), ('/90asds', 2);
