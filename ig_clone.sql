@@ -1,3 +1,28 @@
+Find the five oldest users:
+SELECT * 
+FROM users
+ORDER BY created_at
+LIMIT 5;
+
+What day of the week do most users register on? 
+SELECT 
+    DAYNAME(created_at) AS day,
+    COUNT(*) AS total
+FROM users
+GROUP BY day
+ORDER BY total DESC
+LIMIT 2;
+
+
+
+
+
+
+
+
+
+
+
 DROP DATABASE IF EXISTS ig_clone;
 CREATE DATABASE ig_clone;
 USE ig_clone; 
