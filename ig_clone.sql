@@ -7,5 +7,4 @@ CREATE TABLE users (
   created_at TIMESTAMP DEFAULT NOW()
 );
 
-//source Instagram/ig_clone.sql
-//DESCRIBE users;
+INSERT INTO users (username) VALUES ('BlueTheCat'), ('CharlieBrown'), ('ColtSteel');
