@@ -23,6 +23,54 @@ SELECT username, image_url FROM users LEFT JOIN photos ON users.id = photos.user
 SELECT username, image_url FROM users JOIN photos ON users.id = photos.user_id WHERE photos.id IS NULL;
 
 
+Who has the most likes on their photo?
+SELECT * FROM photos;
+SELECT * FROM likes;
+SELECT
+    username,
+    photos.id, 
+    photos.image_url,
+    COUNT(*) AS total
+FROM photos 
+INNER JOIN likes 
+    ON likes.photo_id = photos.id
+INNER JOIN users
+    ON photos.user_id = users.id
+GROUP BY photos.id
+ORDER BY total DESC
+LIMIT 1;
+
+
+Calculate average number of photos per user?
+total number of photos / total number of users
+SELECT COUNT(*) FROM photos;
+SELECT COUNT(*) FROM users;
+SELECT (SELECT COUNT(*) FROM photos) / (SELECT COUNT(*) FROM users) AS avg;
+
+
+Find the six most popular hashtags?
+SELECT * FROM tags;
+SELECT * FROM photo_tags;
+
+SELECT  tags.tag_name, 
+        COUNT(*) AS total
+FROM photo_tags
+INNER JOIN tags
+    ON photo_tags.tag_id = tags.id
+GROUP BY tags.id
+ORDER BY total DESC 
+LIMIT 5;
+
+Find users who have liked every single photo on the site?
+SELECT * FROM users
+INNER JOIN likes ON users.id = likes.user_id;
+
+SELECT * FROM users
+INNER JOIN likes ON users.id = likes.user_id
+GROUP BY likes.user_id;
+
+
+
 
 
 
