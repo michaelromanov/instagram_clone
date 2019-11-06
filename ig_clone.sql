@@ -65,9 +65,14 @@ Find users who have liked every single photo on the site?
 SELECT * FROM users
 INNER JOIN likes ON users.id = likes.user_id;
 
-SELECT * FROM users
+SELECT 
+    username,
+    COUNT(*) AS num_likes
+FROM users
 INNER JOIN likes ON users.id = likes.user_id
-GROUP BY likes.user_id;
+GROUP BY likes.user_id
+HAVING num_likes = (SELECT COUNT(*) FROM photos);
+
 
 
 
