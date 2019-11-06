@@ -13,8 +13,14 @@ GROUP BY day
 ORDER BY total DESC
 LIMIT 2;
 
+We want to target our inactive users (users with no photos) with an email campaign?
+SELECT * FROM users;
+SELECT * FROM photos;
 
-
+SELECT * FROM users JOIN photos ON users.id = photos.user_id; // needs refinement 
+SELECT username, image_url FROM users JOIN photos ON users.id = photos.user_id; // missing users who have not submitted anything because this is an inner join that would miss those results.  We will need a right or left join to capture the missing users who never posted so that we can start getting the NULLs we need to see of the users with no photos corresponding to them.
+SELECT username, image_url FROM users LEFT JOIN photos ON users.id = photos.user_id; // Needs more refinement to filter down to only the users with NULL photos.
+SELECT username, image_url FROM users JOIN photos ON users.id = photos.user_id WHERE photos.id IS NULL;
 
 
 
